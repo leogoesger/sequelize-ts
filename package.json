@@ -1,0 +1,36 @@
+{
+    "name": "gutsy-node-api",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "start": "nodemon --require ts-node/register ./src/index.ts",
+        "inspect": "node inspect --require ts-node/register ./src/index.ts",
+        "serve": "node ./build/index.js",
+        "seed": "node --require ts-node/register ./src/seeders/index.ts"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.17.0",
+        "@types/cors": "^2.8.4",
+        "@types/dotenv": "^4.0.3",
+        "@types/express": "^4.16.0",
+        "@types/morgan": "^1.7.35",
+        "@types/pg": "^7.4.10",
+        "nodemon": "^1.18.3",
+        "reflect-metadata": "^0.1.12",
+        "ts-node": "^7.0.0",
+        "tslint": "^5.11.0",
+        "typescript": "^2.9.2"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "cors": "^2.8.4",
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3",
+        "morgan": "^1.9.0",
+        "pg": "^7.4.3",
+        "sequelize": "^4.38.0",
+        "sequelize-typescript": "^1.0.0-alpha.3"
+    }
+}
