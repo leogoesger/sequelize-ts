@@ -4,7 +4,7 @@ import { Table, Column, Model } from "sequelize-typescript";
 class Person extends Model<Person> {
     @Column name: string;
 
-    @Column age: Number;
+    @Column age: number;
 }
 
 export default Person;

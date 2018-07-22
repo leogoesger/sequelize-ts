@@ -8,7 +8,11 @@
         "start": "nodemon --require ts-node/register ./src/index.ts",
         "inspect": "node inspect --require ts-node/register ./src/index.ts",
         "serve": "node ./build/index.js",
-        "seed": "node --require ts-node/register ./src/seeders/index.ts"
+        "migrate:up": "db-migrate up --config ./src/configs/database.json -m ./build/migrations",
+        "migrate:down": "db-migrate down -c 999 --config ./src/configs/database.json -m ./build/migrations",
+        "db:prepare": "yarn build && yarn migrate:down && yarn migrate:up",
+        "seed:up": "yarn build && db-migrate up --config ./src/configs/database.json -m ./build/seeders",
+        "seed:down": "yarn build && db-migrate down -c 999 --config ./src/configs/database.json -m ./build/seeders"
     },
     "devDependencies": {
         "@types/body-parser": "^1.17.0",
@@ -17,6 +21,8 @@
         "@types/express": "^4.16.0",
         "@types/morgan": "^1.7.35",
         "@types/pg": "^7.4.10",
+        "db-migrate": "^0.11.1",
+        "db-migrate-pg": "^0.4.0",
         "nodemon": "^1.18.3",
         "reflect-metadata": "^0.1.12",
         "ts-node": "^7.0.0",
