@@ -10,23 +10,20 @@ exports.setup = (options: any, seedLink: any) => {
 };
 
 exports.up = (db: any) => {
-    return db.createTable("Location", {
-        description: "text",
-        geoCode: "jsonb",
+    return db.createTable("Book", {
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
             type: "int",
         },
-        locationId: "int",
-        name: "string",
-        open: "boolean",
+        publishedDate: "date",
+        title: "string",
     });
 };
 
 exports.down = (db: any) => {
-    return db.dropTable("Location");
+    return db.dropTable("Book");
 };
 
 exports._meta = {

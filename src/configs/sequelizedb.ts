@@ -8,17 +8,11 @@ interface Idb {
     [index: string]: any;
 }
 
-const files = fs
-    .readdirSync(path.join(__dirname, "../models"))
-    .filter((file: any) => file !== "index.ts");
-
 export const db: Idb = {
     dev: {
         database: "gutsy_development_t",
         dialect: "postgres",
-        exclude: ["index.ts"],
         host: "127.0.0.1",
-        modelPaths: files,
         operatorsAliases: Sequelize.Op as any,
         password: null as any,
         port: 5432,
@@ -28,7 +22,6 @@ export const db: Idb = {
         database: "gutsy_development_t",
         dialect: "postgres",
         host: "127.0.0.1",
-        modelPaths: files,
         operatorsAliases: Sequelize.Op as any,
         password: null as any,
         port: 5432,
@@ -38,7 +31,6 @@ export const db: Idb = {
         database: "gutsy_development_t",
         dialect: "postgres",
         host: "127.0.0.1",
-        modelPaths: files,
         operatorsAliases: Sequelize.Op as any,
         password: null as any,
         port: 5432,

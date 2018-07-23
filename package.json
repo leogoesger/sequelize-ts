@@ -10,9 +10,9 @@
         "serve": "node ./build/index.js",
         "migrate:up": "db-migrate up --config ./src/configs/database.json -m ./build/migrations",
         "migrate:down": "db-migrate down -c 999 --config ./src/configs/database.json -m ./build/migrations",
-        "db:prepare": "rimraf ./build && yarn build && yarn migrate:down && yarn migrate:up",
-        "seed:up": "yarn build && db-migrate up --config ./src/configs/database.json -m ./build/seeders",
-        "seed:down": "yarn build && db-migrate down -c 999 --config ./src/configs/database.json -m ./build/seeders"
+        "seed:up": "db-migrate up --config ./src/configs/database.json -m ./build/seeders --force-exit --table seeders",
+        "seed:down": "db-migrate down -c 999 --config ./src/configs/database.json -m ./build/seeders --force-exit --table seeders",
+        "db:prepare": "rimraf ./build && yarn build && yarn migrate:down && yarn migrate:up && yarn seed:down && yarn seed:up"
     },
     "devDependencies": {
         "@types/body-parser": "^1.17.0",
