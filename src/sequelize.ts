@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import { db } from "./configs/sequelizedb";
 
-const ENV = process.env.ENV || "dev",
-    db_config = db[ENV];
+const ENV = process.env.ENV || "dev";
 
-export const sequelize = new Sequelize(db_config);
+export const sequelize = new Sequelize(db[ENV]);

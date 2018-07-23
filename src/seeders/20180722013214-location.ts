@@ -1,24 +1,26 @@
 "use strict";
-import { sequelize } from "../sequelize";
-sequelize.addModels(["../models"]);
+
 import { locations } from "../seederData";
 import Location from "../models/Location";
 
-var dbm;
-var type;
-var seed;
+import { sequelize } from "../sequelize";
+sequelize.addModels(["../models"]);
 
-exports.setup = function(options: any, seedLink: any) {
+let dbm;
+let type;
+let seed;
+
+exports.setup = (options: any, seedLink: any) => {
     dbm = options.dbmigrate;
     type = dbm.dataType;
     seed = seedLink;
 };
 
-exports.up = function() {
+exports.up = () => {
     return Location.bulkCreate(locations);
 };
 
-exports.down = function() {
+exports.down = () => {
     return Location.destroy({ where: {} });
 };
 

@@ -14,6 +14,7 @@ exports.up = (db: any) => {
     return db.createTable("Location", {
         description: "text",
         geoCode: "jsonb",
+        id: { type: "int", primaryKey: true },
         locationId: "int",
         name: "string",
         open: "boolean",

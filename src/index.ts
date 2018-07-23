@@ -1,6 +1,7 @@
+/* tslint:disable:no-console */
 import { createServer } from "http";
 import app from "./app";
-// import { sequelize } from "./sequelize";
+import { sequelize } from "./sequelize";
 
 const port = process.env.PORT || 8081;
 

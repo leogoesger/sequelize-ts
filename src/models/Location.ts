@@ -1,12 +1,12 @@
 import {
     BelongsTo,
     Column,
+    DataType,
     ForeignKey,
     HasMany,
     Model,
     Table,
 } from "sequelize-typescript";
-import { DataType } from "sequelize-typescript";
 
 @Table
 class Location extends Model<Location> {
