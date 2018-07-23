@@ -1,36 +1,36 @@
 import {
-    Table,
-    Column,
-    Model,
-    ForeignKey,
     BelongsTo,
+    Column,
+    ForeignKey,
     HasMany,
+    Model,
+    Table,
 } from "sequelize-typescript";
 import { DataType } from "sequelize-typescript";
 
 @Table
 class Location extends Model<Location> {
-    @Column name: string;
+    @Column public name: string;
 
     @Column({
         type: DataType.TEXT,
     })
-    description: string;
+    public description: string;
 
     @Column({
         type: DataType.JSONB,
     })
-    geoCode?: string;
+    public geoCode?: string;
 
     @ForeignKey(() => Location)
     @Column
-    locationId?: number;
+    public locationId?: number;
 
     @BelongsTo(() => Location)
-    location?: Location;
+    public location?: Location;
 
     @HasMany(() => Location)
-    locations?: Location;
+    public locations?: Location;
 }
 
 export default Location;

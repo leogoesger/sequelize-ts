@@ -1,23 +1,27 @@
 "use strict";
 
-var dbm;
-var type;
-var seed;
+let dbm;
+let type;
+let seed;
 
-exports.setup = function(options: any, seedLink: any) {
+exports.setup = (options: any, seedLink: any) => {
     dbm = options.dbmigrate;
     type = dbm.dataType;
     seed = seedLink;
 };
 
-exports.up = function(db: any) {
-    return db.addColumn("Location", "random", {
-        type: "string",
+exports.up = (db: any) => {
+    return db.createTable("Location", {
+        description: "text",
+        geoCode: "jsonb",
+        locationId: "int",
+        name: "string",
+        open: "boolean",
     });
 };
 
-exports.down = function(db: any) {
-    return db.removeColumn("Location", "random");
+exports.down = (db: any) => {
+    return db.dropTable("Location");
 };
 
 exports._meta = {

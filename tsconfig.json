@@ -3,7 +3,6 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,
-        "jsx": "react",
         "module": "commonjs",
         "noImplicitAny": true,
         "outDir": "./build/",
@@ -11,6 +10,7 @@
         "removeComments": true,
         "sourceMap": true,
         "skipLibCheck": true,
+        "allowJs": true,
         "target": "es6",
         "lib": ["es5", "dom", "esnext.asynciterable", "es2015"]
     },

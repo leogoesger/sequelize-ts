@@ -10,7 +10,7 @@
         "serve": "node ./build/index.js",
         "migrate:up": "db-migrate up --config ./src/configs/database.json -m ./build/migrations",
         "migrate:down": "db-migrate down -c 999 --config ./src/configs/database.json -m ./build/migrations",
-        "db:prepare": "yarn build && yarn migrate:down && yarn migrate:up",
+        "db:prepare": "rimraf ./build && yarn build && yarn migrate:down && yarn migrate:up",
         "seed:up": "yarn build && db-migrate up --config ./src/configs/database.json -m ./build/seeders",
         "seed:down": "yarn build && db-migrate down -c 999 --config ./src/configs/database.json -m ./build/seeders"
     },
@@ -25,8 +25,10 @@
         "db-migrate-pg": "^0.4.0",
         "nodemon": "^1.18.3",
         "reflect-metadata": "^0.1.12",
+        "rimraf": "^2.6.2",
         "ts-node": "^7.0.0",
         "tslint": "^5.11.0",
+        "tslint-config-prettier": "^1.14.0",
         "typescript": "^2.9.2"
     },
     "dependencies": {
