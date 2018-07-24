@@ -1,6 +1,10 @@
 import { Sequelize } from "sequelize-typescript";
 
-module.exports = {
+interface Idb {
+    [index: string]: any;
+}
+
+const db = {
     development: {
         database: "gutsy_development_t",
         dialect: "postgres",
@@ -29,3 +33,5 @@ module.exports = {
         username: "postgres",
     },
 };
+
+export = db as Idb;
