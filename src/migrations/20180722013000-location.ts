@@ -1,34 +1,40 @@
 "use strict";
-
-exports.setup = (options: any, seedLink: any) => {
-    let dbm;
-    let type;
-    let seed;
-    dbm = options.dbmigrate;
-    type = dbm.dataType;
-    seed = seedLink;
-};
-
-exports.up = (db: any) => {
-    return db.createTable("Location", {
-        description: "text",
-        geoCode: "jsonb",
-        id: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: "int",
-        },
-        locationId: "int",
-        name: "string",
-        open: "boolean",
-    });
-};
-
-exports.down = (db: any) => {
-    return db.dropTable("Location");
-};
-
-exports._meta = {
-    version: 1,
+module.exports = {
+    up: (queryInterface: any, Sequelize: any) => {
+        return queryInterface.createTable("Location", {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER,
+            },
+            name: {
+                type: Sequelize.TEXT,
+                allowNull: false,
+            },
+            open: {
+                type: Sequelize.BOOLEAN,
+            },
+            description: {
+                type: Sequelize.TEXT,
+            },
+            geoCode: {
+                type: Sequelize.TEXT,
+            },
+            locationId: {
+                type: Sequelize.INTEGER,
+            },
+            createdAt: {
+                allowNull: false,
+                type: Sequelize.DATE,
+            },
+            updatedAt: {
+                allowNull: false,
+                type: Sequelize.DATE,
+            },
+        });
+    },
+    down: (queryInterface: any) => {
+        return queryInterface.dropTable("Location");
+    },
 };

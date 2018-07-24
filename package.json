@@ -4,15 +4,14 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "build": "tsc",
+        "build": "rimraf ./build && tsc",
         "start": "nodemon --require ts-node/register ./src/index.ts",
         "inspect": "node inspect --require ts-node/register ./src/index.ts",
         "serve": "node ./build/index.js",
-        "migrate:up": "db-migrate up --config ./src/configs/database.json -m ./build/migrations",
-        "migrate:down": "db-migrate down -c 999 --config ./src/configs/database.json -m ./build/migrations",
-        "seed:up": "db-migrate up --config ./src/configs/database.json -m ./build/seeders --force-exit --table seeders",
-        "seed:down": "db-migrate down -c 999 --config ./src/configs/database.json -m ./build/seeders --force-exit --table seeders",
-        "db:prepare": "rimraf ./build && yarn build && yarn migrate:down && yarn migrate:up && yarn seed:down && yarn seed:up"
+        "migrate:up": "sequelize db:migrate",
+        "migrate:down": "sequelize db:migrate:undo:all",
+        "seed": "sequelize db:seed:all",
+        "db:prepare": "yarn build && yarn migrate:down && yarn migrate:up && yarn seed"
     },
     "devDependencies": {
         "@types/body-parser": "^1.17.0",
@@ -39,6 +38,7 @@
         "morgan": "^1.9.0",
         "pg": "^7.4.3",
         "sequelize": "^4.38.0",
+        "sequelize-cli": "^4.0.0",
         "sequelize-typescript": "^1.0.0-alpha.3"
     }
 }
