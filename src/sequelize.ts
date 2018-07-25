@@ -1,7 +1,7 @@
 /* tslint:disable: no-var-requires */
 
-import { Sequelize } from "sequelize-typescript";
 const db = require("./configs/config");
+import { Sequelize } from "sequelize-typescript";
 
 const ENV = process.env.ENV || "development";
 

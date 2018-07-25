@@ -7,10 +7,10 @@ import {
     UpdatedAt,
 } from "sequelize-typescript";
 
-import { Author, Book } from "./";
+import { Book, Climb } from "./";
 
 @Table
-class AuthorBook extends Model<AuthorBook> {
+class BookClimb extends Model<BookClimb> {
     @CreatedAt public createdAt: Date;
     @UpdatedAt public updatedAt: Date;
 
@@ -18,9 +18,9 @@ class AuthorBook extends Model<AuthorBook> {
     @Column
     public bookId: number;
 
-    @ForeignKey(() => Author)
+    @ForeignKey(() => Climb)
     @Column
-    public authorId: number;
+    public climbId: number;
 }
 
-export default AuthorBook;
+export default BookClimb;

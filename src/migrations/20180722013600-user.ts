@@ -3,54 +3,50 @@ import { QueryInterface, DataTypes } from "sequelize";
 
 module.exports = {
     up: (queryInterface: QueryInterface, dataType: DataTypes) => {
-        return queryInterface.createTable("Location", {
+        return queryInterface.createTable("User", {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: dataType.INTEGER,
             },
-            name: {
+            firstName: {
                 type: dataType.TEXT,
                 allowNull: false,
             },
-            open: {
-                type: dataType.BOOLEAN,
-                defaultValue: true,
+            lastName: {
+                type: dataType.TEXT,
                 allowNull: false,
             },
-            description: {
+            email: {
                 type: dataType.TEXT,
+                allowNull: false,
+                unique: true,
             },
-            geoCode: {
+            password: {
                 type: dataType.TEXT,
+                allowNull: false,
             },
-            type: {
+            sex: {
                 type: dataType.ENUM,
+                values: ["MALE", "FEMALE", "OTHER"],
+                allowNull: true,
+            },
+            birth: {
+                type: dataType.DATE,
                 allowNull: false,
-                values: [
-                    "COUNTRY",
-                    "STATE",
-                    "REGION",
-                    "PLACE",
-                    "AREA",
-                    "SECTION",
-                ],
             },
-            countryId: {
-                type: dataType.INTEGER,
+            height: {
+                type: dataType.TEXT,
+                allowNull: false,
             },
-            stateId: {
-                type: dataType.INTEGER,
+            apIndex: {
+                type: dataType.FLOAT,
+                allowNull: false,
             },
-            regionId: {
-                type: dataType.INTEGER,
-            },
-            placeId: {
-                type: dataType.INTEGER,
-            },
-            areaId: {
-                type: dataType.INTEGER,
+            startDate: {
+                type: dataType.DATE,
+                allowNull: false,
             },
             createdAt: {
                 allowNull: false,
@@ -63,6 +59,6 @@ module.exports = {
         });
     },
     down: (queryInterface: any) => {
-        return queryInterface.dropTable("Location");
+        return queryInterface.dropTable("User");
     },
 };
