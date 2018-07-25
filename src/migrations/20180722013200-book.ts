@@ -20,6 +20,11 @@ module.exports = {
             publishedDate: {
                 type: dataTypes.DATE,
             },
+            available: {
+                type: dataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: true,
+            },
             createdAt: {
                 allowNull: false,
                 type: dataTypes.DATE,

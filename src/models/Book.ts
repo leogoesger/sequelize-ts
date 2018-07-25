@@ -16,6 +16,8 @@ class Book extends Model<Book> {
 
     @Column public publishedDate: Date;
 
+    @Column public available: boolean;
+
     @CreatedAt public createdAt: Date;
     @UpdatedAt public updatedAt: Date;
 

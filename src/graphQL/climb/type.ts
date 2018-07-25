@@ -15,19 +15,15 @@ const ClimbEnumType = new GraphQLEnumType({
     },
 });
 
-const CommonType = {
-    name: { type: GraphQLString },
-    grade: { type: GraphQLString },
-    type: { type: ClimbEnumType },
-    description: { type: GraphQLString },
-    protection: { type: GraphQLBoolean },
-    images: { type: new GraphQLList(GraphQLString) },
-};
-
 const ClimbType = new GraphQLObjectType({
     name: "ClimbType",
     fields: () => ({
-        ...CommonType,
+        name: { type: GraphQLString },
+        grade: { type: GraphQLString },
+        type: { type: ClimbEnumType },
+        description: { type: GraphQLString },
+        protection: { type: GraphQLBoolean },
+        images: { type: new GraphQLList(GraphQLString) },
     }),
 });
 

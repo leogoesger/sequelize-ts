@@ -13,7 +13,7 @@ import {
 interface IArg {
     id: number;
 }
-const userQueries = {
+const locationQueries = {
     getCountries: {
         type: new GraphQLList(CountryType),
         resolve() {
@@ -64,4 +64,4 @@ const userQueries = {
     },
 };
 
-export default userQueries;
+export default locationQueries;
