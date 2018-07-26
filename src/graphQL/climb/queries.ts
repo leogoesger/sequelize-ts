@@ -1,6 +1,3 @@
-import { GraphQLList, GraphQLNonNull, GraphQLID } from "graphql";
-
-import ClimbType from "./type";
 import services from "./services";
 
 interface IArg {
@@ -8,20 +5,8 @@ interface IArg {
 }
 
 const climbQueries = {
-    getClimbs: {
-        type: new GraphQLList(ClimbType),
-        resolve() {
-            return services.getClimbs();
-        },
-    },
-
-    getClimb: {
-        type: ClimbType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getClimb(id);
-        },
-    },
+    getClimbs: () => services.getClimbs(),
+    getClimb: (parentValue: any, { id }: IArg) => services.getClimb(id),
 };
 
 export default climbQueries;

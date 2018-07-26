@@ -1,67 +1,23 @@
-import { GraphQLList, GraphQLNonNull, GraphQLID } from "graphql";
-
 import services from "./services";
-import {
-    CountryType,
-    StateType,
-    RegionType,
-    PlaceType,
-    AreaType,
-    SectionType,
-} from "./types";
 
 interface IArg {
     id: number;
 }
+
 const locationQueries = {
-    getCountries: {
-        type: new GraphQLList(CountryType),
-        resolve() {
-            return services.getCountries();
-        },
-    },
-    getCountry: {
-        type: StateType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getCountry(id);
-        },
-    },
-    getState: {
-        type: StateType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getState(id);
-        },
-    },
-    getRegion: {
-        type: RegionType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getRegion(id);
-        },
-    },
-    getPlace: {
-        type: PlaceType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getPlace(id);
-        },
-    },
-    getArea: {
-        type: AreaType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getArea(id);
-        },
-    },
-    getSection: {
-        type: SectionType,
-        args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-        resolve(_: any, { id }: IArg) {
-            return services.getSection(id);
-        },
-    },
+    getCountries: () => services.getCountries(),
+
+    getCountry: (_: any, { id }: IArg) => services.getCountry(id),
+
+    getState: (_: any, { id }: IArg) => services.getState(id),
+
+    getRegion: (_: any, { id }: IArg) => services.getRegion(id),
+
+    getPlace: (_: any, { id }: IArg) => services.getPlace(id),
+
+    getArea: (_: any, { id }: IArg) => services.getArea(id),
+
+    getSection: (_: any, { id }: IArg) => services.getSection(id),
 };
 
 export default locationQueries;

@@ -1,3 +1,5 @@
+/* tslint:disable: no-console */
+
 import { Climb, Location } from "../../models";
 
 const generateOption = (arg1: string, arg2: string) => ({

@@ -14,6 +14,9 @@ module.exports = {
                 type: dataTypes.TEXT,
                 allowNull: false,
             },
+            description: {
+                type: dataTypes.TEXT,
+            },
             open: {
                 type: dataTypes.BOOLEAN,
             },

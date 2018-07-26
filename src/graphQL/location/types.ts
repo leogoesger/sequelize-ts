@@ -1,81 +1,82 @@
-import {
-    GraphQLObjectType,
-    GraphQLString,
-    GraphQLList,
-    GraphQLBoolean,
-    GraphQLEnumType,
-} from "graphql";
+const types = `
+    enum LocationEnum {
+        COUNTRY
+        STATE
+        REGION
+        PLACE
+        AREA
+        SECTION
+    }
 
-import ClimbType from "../climb/type";
+    type CountryType {
+        name: String
+        geoCode: String
+        open: Boolean
+        type: LocationEnum
+        createdAt: String
+        updatedAt: String
+        states: [StateType]
+    }
 
-const LocationEnumType = new GraphQLEnumType({
-    name: "LocationEnumType",
-    values: {
-        COUNTRY: { value: 0 },
-        STATE: { value: 1 },
-        REGION: { value: 2 },
-        PLACE: { value: 3 },
-        AREA: { value: 4 },
-        SECTION: { value: 5 },
-    },
-});
+    type StateType {
+        name: String
+        geoCode: String
+        open: Boolean
+        type: LocationEnum
+        createdAt: String
+        updatedAt: String
+        regions: [RegionType]
+    }
 
-const CommonType = {
-    name: { type: GraphQLString },
-    description: { type: GraphQLString },
-    geoCode: { type: GraphQLString },
-    open: { type: GraphQLBoolean },
-    type: { type: LocationEnumType },
-    createdAt: { type: GraphQLString },
-    updatedAt: { type: GraphQLString },
-};
+    type RegionType {
+        name: String
+        geoCode: String
+        open: Boolean
+        type: LocationEnum
+        createdAt: String
+        updatedAt: String
+        places: [PlaceType]
+    }
 
-const CountryType = new GraphQLObjectType({
-    name: "CountryType",
-    fields: () => ({
-        ...CommonType,
-        states: { type: new GraphQLList(StateType) },
-    }),
-});
+    type PlaceType {
+        name: String
+        geoCode: String
+        open: Boolean
+        type: LocationEnum
+        createdAt: String
+        updatedAt: String
+        areas: [AreaType]
+    }
 
-const StateType = new GraphQLObjectType({
-    name: "StateType",
-    fields: () => ({
-        ...CommonType,
-        regions: { type: new GraphQLList(RegionType) },
-    }),
-});
+    type AreaType {
+        name: String
+        geoCode: String
+        open: Boolean
+        type: LocationEnum
+        createdAt: String
+        updatedAt: String
+        sections: [SectionType]
+    }
 
-const RegionType = new GraphQLObjectType({
-    name: "RegionType",
-    fields: () => ({
-        ...CommonType,
-        places: { type: new GraphQLList(PlaceType) },
-    }),
-});
+    type SectionType {
+        name: String
+        geoCode: String
+        open: Boolean
+        type: LocationEnum
+        createdAt: String
+        updatedAt: String
+        climbs: [Climb]
+    }
 
-const PlaceType = new GraphQLObjectType({
-    name: "PlaceType",
-    fields: () => ({
-        ...CommonType,
-        areas: { type: new GraphQLList(AreaType) },
-    }),
-});
+    extend type Query {
+        getCountries: [CountryType]
+        getCountry(id: ID): CountryType
+        getState(id: ID): StateType
+        getRegion(id: ID): RegionType
+        getPlace(id: ID): PlaceType
+        getArea(id: ID): AreaType
+        getSection(id: ID): SectionType
+    }
+`;
 
-const AreaType = new GraphQLObjectType({
-    name: "AreaType",
-    fields: () => ({
-        ...CommonType,
-        sections: { type: new GraphQLList(SectionType) },
-    }),
-});
-
-const SectionType = new GraphQLObjectType({
-    name: "SectionType",
-    fields: () => ({
-        ...CommonType,
-        climbs: { type: new GraphQLList(ClimbType) },
-    }),
-});
-
-export { CountryType, StateType, RegionType, PlaceType, AreaType, SectionType };
+export default types;

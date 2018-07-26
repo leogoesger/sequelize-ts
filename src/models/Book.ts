@@ -14,6 +14,8 @@ import { BookClimb, Climb, Comment } from "./";
 class Book extends Model<Book> {
     @Column public title: string;
 
+    @Column public description: string;
+
     @Column public publishedDate: Date;
 
     @Column public available: boolean;

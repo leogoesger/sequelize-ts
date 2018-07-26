@@ -1,11 +1,11 @@
-import { GraphQLSchema } from "graphql";
+import { makeExecutableSchema } from "graphql-tools";
 
-import RootQueryType from "./queries";
-import MutationType from "./mutations";
+import typeDefs from "./types";
+import Query from "./queries";
 
-const schema = new GraphQLSchema({
-    query: RootQueryType,
-    // mutation: MutationType,
+export default makeExecutableSchema({
+    typeDefs,
+    resolvers: {
+        Query,
+    },
 });
-
-export default schema;
