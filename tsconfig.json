@@ -8,7 +8,7 @@
         "outDir": "./build/",
         "preserveConstEnums": true,
         "removeComments": true,
-        "sourceMap": true,
+        // "sourceMap": true,
         "skipLibCheck": true,
         "allowJs": true,
         "target": "es6",

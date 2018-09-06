@@ -1,6 +1,24 @@
-import Author from "./Author";
-import AuthorBook from "./AuthorBook";
-import Book from "./Book";
-import Location from "./Location";
+// src/db/models/index.js
 
-export { Author, AuthorBook, Book, Location };
+import * as Sequelize from "sequelize";
+import productFactory from "./Product";
+
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config.json")[env];
+const url = config.url || process.env.DATABSE_CONNECTION_URI;
+
+const sequelize = new Sequelize(url, config);
+
+const db = {
+    Product: productFactory(sequelize),
+    Sequelize,
+    sequelize,
+};
+
+(<any>Object).values(db).forEach((model: any) => {
+    if (model.associate) {
+        model.associate(db);
+    }
+});
+
+export default db;

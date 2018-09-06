@@ -7,6 +7,9 @@
         "class-name": true
     },
     "rules": {
-        "ordered-imports": false
+        "ordered-imports": false,
+        "no-var-requires": false,
+        "no-angle-bracket-type-assertion": false,
+        "object-literal-sort-keys": false
     }
 }
